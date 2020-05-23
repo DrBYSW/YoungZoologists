@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Young Zoologists</string>
+    <string name="exit_message">Leaving so soon?</string>
+
+    <string name="title_activity_fullscreen">FullScreen</string>
+    <string name="title_activity_chapter_selection">ChapterSelection</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">Dummy Content</string>
+
+    <string name="title_activity_options">OptionsActivity</string>
+</resources>
