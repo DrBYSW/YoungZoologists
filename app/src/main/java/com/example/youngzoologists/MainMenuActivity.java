@@ -80,7 +80,8 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     private void redirectTo(Class final_dest){
-        Intent startGame = new Intent(MainMenuActivity.this, final_dest);
-        startActivity(startGame);
+        Intent intent = new Intent(MainMenuActivity.this, final_dest);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

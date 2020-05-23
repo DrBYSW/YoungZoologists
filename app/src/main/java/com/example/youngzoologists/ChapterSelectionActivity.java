@@ -2,75 +2,69 @@ package com.example.youngzoologists;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ChapterSelectionActivity extends AppCompatActivity {
-//    private static final boolean AUTO_HIDE = true;
-//
-//    private static final int UI_ANIMATION_DELAY = 300;
-//    private final Handler mHideHandler = new Handler();
-//    private View mContentView;
-//    private final Runnable mHidePart2Runnable = new Runnable() {
-//        @SuppressLint("InlinedApi")
-//        @Override
-//        public void run() {
-//            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-//                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-//                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-//                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-//        }
-//    };
-//    private boolean mVisible;
 
-    private Button dummybtn;
+    private Button btnBack;
+    private LinearLayout btnChapter1;
+    private LinearLayout btnChapter2;
+    private LinearLayout btnChapter3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_chapter_selection);
-        dummybtn = findViewById(R.id.dummy_button);
-        dummybtn.setOnClickListener(new View.OnClickListener() {
+
+        btnChapter1 = findViewById(R.id.btnChapter1);
+        btnChapter2 = findViewById(R.id.btnChapter2);
+        btnChapter3 = findViewById(R.id.btnChapter3);
+        btnBack = findViewById(R.id.btnBack);
+
+        btnChapter1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChapterSelectionActivity.this, MainMenuActivity.class);
-                startActivity(intent);
+//                redirectTo(Chapter1Activity.class);
+                Log.e("TAG", "onClick: go to chapter 1 activity");
             }
         });
-//        mVisible = true;
-//        mContentView = findViewById(R.id.fullscreen_content);
+
+        btnChapter2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                redirectTo(Chapter2Activity.class);
+                Log.e("TAG", "onClick: go to chapter 2 activity");
+            }
+        });
+
+        btnChapter3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                redirectTo(Chapter3Activity.class);
+                Log.e("TAG", "onClick: go to chapter 3 activity");
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectTo(MainMenuActivity.class);
+            }
+        });
+
     }
 
-//    @Override
-//    protected void onPostCreate(Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        delayedHide(100);
-//    }
-//
-//    private void hide() {
-//        // Hide UI first
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.hide();
-//        }
-//        mVisible = false;
-//
-//        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
-//    }
-//
-//    private final Runnable mHideRunnable = new Runnable() {
-//        @Override
-//        public void run() {
-//            hide();
-//        }
-//    };
-//
-//    private void delayedHide(int delayMillis) {
-//        mHideHandler.removeCallbacks(mHideRunnable);
-//        mHideHandler.postDelayed(mHideRunnable, delayMillis);
-//    }
+    private void redirectTo(Class final_dest){
+        Intent intent = new Intent(ChapterSelectionActivity.this, final_dest);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+
 }
