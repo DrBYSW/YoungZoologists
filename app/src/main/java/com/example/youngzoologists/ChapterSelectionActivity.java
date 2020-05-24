@@ -1,6 +1,7 @@
 package com.example.youngzoologists;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,38 @@ public class ChapterSelectionActivity extends AppCompatActivity {
     private LinearLayout btnChapter1;
     private LinearLayout btnChapter2;
     private LinearLayout btnChapter3;
+    public static boolean sActive;
+    public static MediaPlayer mediaPlayer;
+
+    @Override
+    protected void onPause() {
+        sActive = false;
+
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+
+        // pausing the player in case of exiting from the app
+        if (MainMenuActivity.mediaPlayer.isPlaying() && !(MainMenuActivity.sActive || OptionsActivity.sActive)) {
+            MainMenuActivity.mediaPlayer.pause();
+        }
+
+        super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        sActive = true;
+
+        if (!MainMenuActivity.mediaPlayer.isPlaying()) {
+            MainMenuActivity.mediaPlayer.start();
+            MainMenuActivity.mediaPlayer.setLooping(true);
+        }
+
+        super.onResume();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

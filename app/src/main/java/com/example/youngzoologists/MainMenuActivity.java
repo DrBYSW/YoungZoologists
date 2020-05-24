@@ -2,6 +2,7 @@ package com.example.youngzoologists;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +15,18 @@ public class MainMenuActivity extends AppCompatActivity {
     private Button btnOptions;
     private Button btnExit;
     private AlertDialog.Builder builder;
+    public static MediaPlayer mediaPlayer;
+    public static boolean sActive;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main_menu);
+
+        mediaPlayer = playsoundtrack(R.raw.main_soundtrack_standin);
+
+
 
         btnStart = findViewById(R.id.btnStart);
         btnOptions = findViewById(R.id.btnOptions);
@@ -45,6 +52,40 @@ public class MainMenuActivity extends AppCompatActivity {
                 showExitDialog();
             }
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+
+        // starting the player if it is not playing
+        if (!mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+            mediaPlayer.setLooping(true);
+        }
+
+        // true when activity is active
+        sActive = true;
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+
+        sActive = false;
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+
+        if (mediaPlayer.isPlaying()
+                && !(OptionsActivity.sActive || ChapterSelectionActivity.sActive)) {
+            mediaPlayer.pause();
+        }
+
+        super.onStop();
+
     }
 
     private void showExitDialog(){
@@ -84,4 +125,13 @@ public class MainMenuActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
+    private MediaPlayer playsoundtrack(int soundtrack){
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, soundtrack);
+        mediaPlayer.setVolume(0.02f,0.02f);
+        mediaPlayer.start();
+
+        return mediaPlayer;
+    }
+
 }
