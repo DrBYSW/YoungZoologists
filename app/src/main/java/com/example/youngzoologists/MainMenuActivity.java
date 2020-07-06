@@ -28,16 +28,16 @@ public class MainMenuActivity extends AppCompatActivity {
 
 
 
-        btnStart = findViewById(R.id.btnStart);
+//        btnStart = findViewById(R.id.btnStart);
         btnOptions = findViewById(R.id.btnOptions);
-        btnExit = findViewById(R.id.btnExit);
-
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                redirectTo(ChapterSelectionActivity.class);
-            }
-        });
+//        btnExit = findViewById(R.id.btnExit);
+//
+//        btnStart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                redirectTo(ChapterSelectionActivity.class);
+//            }
+//        });
 
         btnOptions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,13 +45,13 @@ public class MainMenuActivity extends AppCompatActivity {
                 redirectTo(OptionsActivity.class);
             }
         });
-
-        btnExit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showExitDialog();
-            }
-        });
+//
+//        btnExit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showExitDialog();
+//            }
+//        });
 
     }
 

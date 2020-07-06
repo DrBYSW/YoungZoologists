@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_standin"
     tools:context=".FullscreenActivity2">
 
     <!-- This FrameLayout insets its children based on system windows using
@@ -31,17 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3" />
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:alpha="0.7"
-                android:textColor="@android:color/black"
-                android:text="Young Zoologist"/>
 
             <androidx.legacy.widget.Space
                 android:layout_width="0dp"
@@ -57,14 +45,7 @@
                 <androidx.legacy.widget.Space
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:layout_weight="2"
-                    android:id="@+id/btnStart"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Start" />
+                    android:layout_weight="3" />
 
 
                 <androidx.legacy.widget.Space
@@ -84,12 +65,6 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Button
-                    android:layout_weight="2"
-                    android:id="@+id/btnExit"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Exit" />
             </LinearLayout>
         </LinearLayout>
 

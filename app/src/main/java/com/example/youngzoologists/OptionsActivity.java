@@ -46,6 +46,7 @@ public class OptionsActivity extends AppCompatActivity {
     protected void onResume() {
         sActive = true;
 
+        //unpausing the player in case of resuming to others
         if (!MainMenuActivity.mediaPlayer.isPlaying()) {
             MainMenuActivity.mediaPlayer.start();
             MainMenuActivity.mediaPlayer.setLooping(true);
@@ -64,6 +65,7 @@ public class OptionsActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         sbMaster = findViewById(R.id.sbMaster);
 
+        //back button onclick
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,10 +73,12 @@ public class OptionsActivity extends AppCompatActivity {
             }
         });
 
+        //Check if slider moves
         sbMaster.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             int progressChangedValue = 0;
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                //change volume if slider moves
                 changeVolume(mediaPlayer, progress);
             }
 
